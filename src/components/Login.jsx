@@ -7,8 +7,7 @@ const initValues = {
 };
 
 const Login = props => {
-  // const [email, setEmail] = React.useState("");
-  // const [password, setPassword] = React.useState("");
+
   const [state, setState] = React.useState(initValues);
 
   const handleChange = (e) => {
@@ -25,9 +24,6 @@ const Login = props => {
     const { email, password } = state;
     
     props.onLogin(email, password)
-     /*.then(() => {
-        //setState(initValues);
-      })*/
       .catch((err) => {
         console.log(err);
         setState((old) => ({

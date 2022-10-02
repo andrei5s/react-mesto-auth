@@ -33,9 +33,8 @@ function App() {
     React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-  //const [state, setState] = useState({ loggedIn: false });
   const [loggedIn, setLoggedIn] = useState(false);
-  const [ userData, setUserData ] = useState({ email: 'email' });
+  
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -190,24 +189,7 @@ function App() {
         }      
       }).catch(err => console.log(err));
     }
-    
-
-
-
-   /* if (!localStorage.getItem('jwt')) return;
-    const jwt = localStorage.getItem("jwt");
-   return auth.checkToken(jwt)
-    .then((res) => {
-      console.log(res);
-     // setUserData({ email: res.data.email });
-     setEmail(res.data.email);*/
-      /*setState({
-        loggedIn: true,
-      });*/
-     // setLoggedIn(true);
-
-     // history.push('/');
-   // });        
+     
   };
   tokenCheck();
 }, []);
@@ -220,11 +202,6 @@ function App() {
         }
         localStorage.setItem('jwt', data.token);
         setEmail(email);
-
-       /* setState(old => ({
-          ...old,
-          loggedIn: true
-        }));*/
         setLoggedIn(true);
 
     })

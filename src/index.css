@@ -7,6 +7,12 @@
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__user-info/header__user-info.css);
 @import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__info-for-smoll/header__info-for-smoll.css);
+@import url(./blocks/header/__info-menu/header__info-menu.css);
+@import url(./blocks/header/__info/header__info.css);
+@import url(./blocks/header/__info-close/header__info-close.css);
+@import url(./blocks/header/__info-icon/header__info-icon.css);
+@import url(./blocks/header/__info-for-big/header__info-for-big.css);
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
 @import url(./blocks/profile/__avatar-overlay/profile__avatar-overlay.css);

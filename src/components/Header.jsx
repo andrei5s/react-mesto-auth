@@ -1,31 +1,42 @@
-import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import logo from "../images/logo.svg";
+import React from 'react';
+import logo from '../images/logo.svg';
+import info from '../images/info.svg';
+import close from '../images/close.svg';
+import HeaderInfo from './HeaderInfo';
 
 function Header(props) {
-  return (
-    <header className="header">
+	const [ infoOpen, setInfoOpen ] = React.useState(false);
+
+	function handleInfoChange(e) {
+		setInfoOpen(!infoOpen);
+	}
+
+	return (
+		<header className="header">
+     
+			{infoOpen && (
+        
+				<div className="header__info-for-small">
+					<HeaderInfo onSignOut={props.onSignOut} email={props.email} />
+				</div>
+			)}
+     
+      <div className='header__info-menu'>
       <img className="header__logo" src={logo} alt="Логотип Место" />
-      <Switch>
-      <Route exact path="/sign-in">
-          <Link to="/sign-up" className="header__link">
-            Регистрация
-          </Link>
-        </Route>
-        <Route exact path="/sign-up">
-          <Link to="/sign-in" className="header__link">
-            Войти
-          </Link>
-        </Route>
-        <Route exact path="/">
-          <div className="header__user-info">
-           <p className="header__email">{props.email}</p>
-          <Link to='/sign-in' className="header__link" onClick={props.onSignOut}>Выйти</Link>
-          </div>          
-        </Route>
-      </Switch>
-    </header>
-  );
+				<div className="header__info">
+					{infoOpen ? (
+						<img className="header__info-close" src={close} alt="закрыть" onClick={handleInfoChange} />
+					) : (
+						<img className="header__info-icon" src={info} alt="Меню-инфо" onClick={handleInfoChange} />
+					)}
+				</div>
+        
+				<div className="header__info-for-big">
+					<HeaderInfo onSignOut={props.onSignOut} email={props.email} />
+				</div>
+        </div>
+		</header>
+	);
 }
 
 export default Header;

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Register = (props) => {
-  //const [password, setPassword] = React.useState("");
-  //const [email, setEmail] = React.useState("");
+  
   const [state, setState] = React.useState({
     email: '',
     password: '',
-   // message: ''
+    message: ''
   });
 
   const handleChange = e => {
@@ -32,25 +31,6 @@ const Register = (props) => {
     });
   };
 
-
-  /*const handlePasswordCahnge = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.onRegister(email, password);
-  };*/
-
- /* const handlePathChange = (newPath) => {
-    props.onPathChange(newPath);
-  };
-
-  React.useEffect(() => {
-    handlePathChange("/sign-up");
-  }, []);*/
 
   return (
     <div className="registration">
