@@ -24,13 +24,13 @@ const Login = props => {
     const { email, password } = state;
     
     props.onLogin(email, password)
-      .catch((err) => {
+     /* .catch((err) => {
         console.log(err);
         setState((old) => ({
           ...old,
           message: "Что-то пошло не так!",
         }));
-      });
+      });*/
   };
 
 

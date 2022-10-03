@@ -22,13 +22,13 @@ const Register = (props) => {
     e.preventDefault();
     const { email, password } = state;
     props.onRegister(email, password)
-   .catch(err => {
+  /* .catch(err => {
       console.log(err);
        setState(old => ({
         ...old,
         message: 'Что-то пошло не так!'
       }));
-    });
+    });*/
   };
 
 

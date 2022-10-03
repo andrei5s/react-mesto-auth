@@ -3,7 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditProfilePopup({ isOpen, onClose, onUpdateAvatar }) {
   const avatarRef = React.useRef();
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateAvatar(
@@ -15,11 +15,12 @@ function EditProfilePopup({ isOpen, onClose, onUpdateAvatar }) {
       }
     );
   }
+  // в этом месте я случайно удалил коментарий, что здесь нужно было сделать
 
   return (
     <PopupWithForm
-      name={`avatar`}
-      title={`Обновить аватар`}
+      name='avatar'
+      title='Обновить аватар'
       isOpen={isOpen}
       onClose={onClose}
       buttonText="Сохранить"

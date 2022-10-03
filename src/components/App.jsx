@@ -92,6 +92,7 @@ function App() {
       });
   }
 
+
   React.useEffect(() => {
     function handleEscClose(evt) {
       if (evt.key === "Escape") {
@@ -102,19 +103,6 @@ function App() {
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    function handleOverlayClose(evt) {
-      if (evt.target.classList.contains("popup_opened")) {
-        closeAllPopups();
-      }
-    }
-    document.addEventListener("click", handleOverlayClose);
-
-    return () => {
-      document.removeEventListener("click", handleOverlayClose);
     };
   }, []);
 
@@ -203,14 +191,15 @@ function App() {
         localStorage.setItem('jwt', data.token);
         setEmail(email);
         setLoggedIn(true);
-
     })
+    .catch(err => { 
+      console.log(err);
+      setInfoToolTipPopupOpen(true);
+    });
   }
 
   React.useEffect(() => {
     if (!loggedIn) return;
-
-   //setEmail(email);
     history.push('/');
 
   }, [loggedIn]);
@@ -246,33 +235,32 @@ function App() {
      <div className="body">
         <div className="page">
        <Header email={email} onSignOut={handleSignOut} />
-          <Switch>
-          <ProtectedRoute
-              exact
-              path='/'
-              loggedIn={loggedIn}
-            >
-            <Main
-             onEditAvatar={handleEditAvatarClick}
-             onEditProfile={handleEditProfileClick}
-             onAddPlace={handleAddPlaceClick}
-             onCardClick={handleCardClick}
-             onCardLike={handleLikeClick}
-             onCardDelete={handleCardDelete}
-             cards={cards}
-             isLoading={isLoading}
-             />
-             </ProtectedRoute>
-          <Route path='/sign-in'>
+       <Switch>
+						<ProtectedRoute
+             exact
+             path='/'
+             loggedIn={loggedIn}
+							onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              onCardLike={handleLikeClick}
+              onCardDelete={handleCardDelete}
+              cards={cards}
+              isLoading={isLoading}
+              component={Main}
+						/>
+						<Route path='/sign-in'>
             <Login onLogin={handleLogin} />
           </Route>
           <Route path='/sign-up'>
             <Register onRegister={handleRegister} />
           </Route>
-          <Route>
-          { loggedIn ? <Redirect to='/' /> : <Redirect to='/sign-in' /> }
-            </Route>
-            </Switch>
+						<Route exact path="/">
+							{loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+						</Route>
+						
+					</Switch>
             <Footer />
            
           <EditProfilePopup

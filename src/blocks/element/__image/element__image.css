@@ -5,6 +5,7 @@
     border-top-right-radius: 10px;
     display: block;
     background-color: #ffffff;
+    object-fit: cover;
 }
 
 .element__image:hover {
