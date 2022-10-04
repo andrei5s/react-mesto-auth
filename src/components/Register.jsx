@@ -2,35 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Register = (props) => {
-  
   const [state, setState] = React.useState({
-    email: '',
-    password: '',
-    message: ''
+    email: "",
+    password: "",
+    message: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setState(old =>({
+    setState((old) => ({
       ...old,
       [name]: value,
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = state;
-    props.onRegister(email, password)
-  /* .catch(err => {
-      console.log(err);
-       setState(old => ({
-        ...old,
-        message: 'Что-то пошло не так!'
-      }));
-    });*/
+    props.onRegister(email, password);
   };
-
 
   return (
     <div className="registration">
@@ -59,18 +50,19 @@ const Register = (props) => {
             className="registration__button"
             type="submit"
             aria-label="Зарегистрироваться"
-           
           >
             Зарегистрироваться
           </button>
           <p className="registration__subtitle">
             Уже зарегистрированы?
-            <Link to='sign-in' className="registration__link">Войти</Link>
+            <Link to="sign-in" className="registration__link">
+              Войти
+            </Link>
           </p>
         </fieldset>
       </form>
     </div>
   );
-}
+};
 
 export default Register;

@@ -25,18 +25,6 @@ class Api {
             .then(this._getResponseData)
     }
 
-    /*editProfile(inputValues) {
-        return fetch(`${this._baseUrl}/users/me`, {
-                method: "PATCH",
-                headers: this._headers,
-                body: JSON.stringify({
-                    name: inputValues['name'],
-                    about: inputValues['job']
-                })
-            })
-            .then(this._getResponseData)
-    }*/
-
     editProfile({ name, about }) {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: "PATCH",
@@ -70,13 +58,13 @@ class Api {
             .then(this._getResponseData)
     }
 
-    /* deleteLike(id) {
-         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-                 method: "DELETE",
-                 headers: this._headers
-             })
-             .then(this._getResponseData)
-     }*/
+    deleteLike(id) {
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+                method: "DELETE",
+                headers: this._headers
+            })
+            .then(this._getResponseData)
+    }
 
     changeLikeCardStatus(id, isLiked) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
@@ -108,10 +96,8 @@ class Api {
 }
 
 export const api = new Api({
-    //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-44',
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-47',
     headers: {
-        //authorization: 'b47138cb-fbda-4048-856a-684bd0ceb9ca',
         authorization: '55080562-6390-49a9-9fc0-d604508c3448',
         'Content-Type': 'application/json'
     }

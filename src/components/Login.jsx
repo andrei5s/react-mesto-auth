@@ -6,8 +6,7 @@ const initValues = {
   message: "",
 };
 
-const Login = props => {
-
+const Login = (props) => {
   const [state, setState] = React.useState(initValues);
 
   const handleChange = (e) => {
@@ -22,17 +21,9 @@ const Login = props => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = state;
-    
-    props.onLogin(email, password)
-     /* .catch((err) => {
-        console.log(err);
-        setState((old) => ({
-          ...old,
-          message: "Что-то пошло не так!",
-        }));
-      });*/
-  };
 
+    props.onLogin(email, password);
+  };
 
   return (
     <div className="registration">
@@ -71,6 +62,6 @@ const Login = props => {
       </form>
     </div>
   );
-}
+};
 
 export default Login;

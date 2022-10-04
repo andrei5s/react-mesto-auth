@@ -3,24 +3,22 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditProfilePopup({ isOpen, onClose, onUpdateAvatar }) {
   const avatarRef = React.useRef();
-  
+
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar(
-      {
-        avatar: avatarRef.current.value,
-      },
-      () => {
-        avatarRef.current.value = "";
-      }
-    );
+    onUpdateAvatar({
+      avatar: avatarRef.current.value,
+    });
   }
-  // в этом месте я случайно удалил коментарий, что здесь нужно было сделать
+
+  React.useEffect(() => {
+    avatarRef.current.value = "";
+  }, [isOpen]);
 
   return (
     <PopupWithForm
-      name='avatar'
-      title='Обновить аватар'
+      name="avatar"
+      title="Обновить аватар"
       isOpen={isOpen}
       onClose={onClose}
       buttonText="Сохранить"
